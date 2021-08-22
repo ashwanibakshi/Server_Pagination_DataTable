@@ -1,0 +1,53 @@
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+ 
+<body class="bg-info">
+    <div class="container">
+        <div class="">
+            <table id="demo" class="table table-bordered table-sm">
+              <thead>
+                <tr>
+                    <th>name</th>
+                    <th>email</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $('#demo').DataTable({
+                    "paging": true,
+            "processing": true,
+            "serverSide": true,
+            "filter":false,
+
+            "ajax": {
+                "type": "POST",
+                "url": "http://localhost:3000/page",
+                "dataSrc": "data"
+            },
+            columns:[
+                {data:"name"},
+                {data:"company"}
+                   ] 
+            });
+    });
+</script>
+ 
+</html>
